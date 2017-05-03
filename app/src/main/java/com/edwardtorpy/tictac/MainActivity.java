@@ -10,41 +10,55 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     boolean redTurn;
-    int[][] gameState;
+    int[] gameState = {2, 2, 2, 2, 2, 2, 2, 2, 2};
+    int[][] winningCombinations = {{0,1,2},{3,4,5},{6,7,8},{0,3,6},{1,4,7},{2,5,8},{0,4,8},{2,4,6}};
 
     public void dropCoin(View view) {
 
-
-
         ImageView imageView = (ImageView) view;
 
-        if (redTurn) {
-            imageView.setImageResource(R.drawable.red);
+        int position = Integer.valueOf(imageView.getTag().toString());
 
-            redTurn = false;
-        } else {
-            imageView.setImageResource(R.drawable.yellow);
+        if (gameState[position] == 2) {
+            if (redTurn) {
+                imageView.setImageResource(R.drawable.red);
+                gameState[position] = 0;
 
-            redTurn = true;
+                redTurn = false;
+            } else {
+                imageView.setImageResource(R.drawable.yellow);
+                gameState[position] = 1;
+
+                redTurn = true;
+            }
+
+            imageView.animate().alpha(1f).setDuration(300);
         }
 
-        imageView.animate().alpha(1f).setDuration(1000);
+        checkWin();
 
     }
 
-    public void resetGameState(){
+    public void checkWin(){
 
-        for (int gameStateColumn = 0; gameStateColumn < 3; gameStateColumn++) {
+        for (int[] winningCombo : winningCombinations ){
 
-            for (int gameStateRow = 0; gameStateRow < 3; gameStateRow++) {
+            if (gameState[winningCombo[0]] == gameState[winningCombo[1]]
+                    && gameState[winningCombo[1]] == gameState[winningCombo[2]]
+                    && gameState[winningCombo[0]] != 2){
 
-                gameState[gameStateColumn][gameStateRow] = 2;
-
+                if (redTurn) {
+                    //It has changed to red's turn but yellow has one so red doesn't get to play
+                    Toast.makeText(this, "Yellow won", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Red won", Toast.LENGTH_SHORT).show();
+                }
             }
 
         }
 
     }
+
 
     public void resetButton(View view){
 
@@ -60,9 +74,10 @@ public class MainActivity extends AppCompatActivity {
 
             ImageView imageView = (ImageView) findViewById(imageViewID);
             imageView.setAlpha(0f);
+
+            gameState[i] = 2;
         }
 
-        //Toast.makeText(this, imageView.toString(), Toast.LENGTH_SHORT).show();
 
     }
 

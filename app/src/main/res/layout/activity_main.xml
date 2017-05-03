@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:onClick="resetButton"
-        android:text="Button"
+        android:text="Reset"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
@@ -34,6 +34,7 @@
             android:layout_row="0"
             android:onClick="dropCoin"
             android:padding="5dp"
+            android:tag="0"
             app:srcCompat="@drawable/red" />
 
         <ImageView
@@ -44,6 +45,7 @@
             android:layout_row="0"
             android:onClick="dropCoin"
             android:padding="5dp"
+            android:tag="1"
             app:srcCompat="@drawable/red" />
 
         <ImageView
@@ -54,6 +56,7 @@
             android:layout_row="0"
             android:onClick="dropCoin"
             android:padding="5dp"
+            android:tag="2"
             app:srcCompat="@drawable/red" />
 
         <ImageView
@@ -64,6 +67,7 @@
             android:layout_row="1"
             android:onClick="dropCoin"
             android:padding="5dp"
+            android:tag="3"
             app:srcCompat="@drawable/red" />
 
         <ImageView
@@ -74,6 +78,7 @@
             android:layout_row="1"
             android:onClick="dropCoin"
             android:padding="5dp"
+            android:tag="4"
             app:srcCompat="@drawable/red" />
 
         <ImageView
@@ -84,6 +89,7 @@
             android:layout_row="1"
             android:onClick="dropCoin"
             android:padding="5dp"
+            android:tag="5"
             app:srcCompat="@drawable/red" />
 
         <ImageView
@@ -94,6 +100,7 @@
             android:layout_row="2"
             android:onClick="dropCoin"
             android:padding="5dp"
+            android:tag="6"
             app:srcCompat="@drawable/red" />
 
         <ImageView
@@ -104,6 +111,7 @@
             android:layout_row="2"
             android:onClick="dropCoin"
             android:padding="5dp"
+            android:tag="7"
             app:srcCompat="@drawable/red" />
 
         <ImageView
@@ -114,6 +122,7 @@
             android:layout_row="2"
             android:onClick="dropCoin"
             android:padding="5dp"
+            android:tag="8"
             app:srcCompat="@drawable/red" />
 
     </GridLayout>
